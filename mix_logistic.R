@@ -112,33 +112,3 @@ legend(0.4, 30,legend=c("Component 1", "Component 2"),col=c("blueviolet", "choco
 plot(dados$y,col=as.factor(dados$latente),pch=19, ylab = "y", xlab= "index", main =" Classified Data")
 legend(9, 32,legend=c("Component 1", "Component 2"),col=c("blueviolet", "chocolate"),pch=19, cex=0.8)
 
-#conclusão : vemos que y>25 pertence a componente 1 com covariável 0.
-
-
-
-p=1
-Y1=NULL
-y1 <- function(i) rbinom(27,50,logit_inversa( beta_0[p]+beta_1[p]*dados$confusum))
-for (i in 1:1000) {Y1=c(Y1,y1(i)) }
-plot(density(Y1))
-
-p=2
-Y2=NULL
-y2 <- function(i) rbinom(27,50,logit_inversa( beta_0[p]+beta_1[p]*dados$confusum))
-for (i in 1:1000) {Y2=c(Y2,y2(i)) }
-plot(density(Y2), col = "red")
-
-hist(Y2, col = "red",xlim = c(0,50),ylim = c(0,5000))
-hist(Y1, add = T)
-
-l =function (i) sample(c(1,2),1,prob=c(0.46,0.54),replace = TRUE)
-Y=NULL
-lab=NULL
-for (i in 1:10000) {
-  lab=c(lab,l(i))
-  if(l(i)==1){
-    Y=c(Y,sample(Y1,1))
-  }else{
-    Y=c(Y,sample(Y2,1))
-  }
-}
