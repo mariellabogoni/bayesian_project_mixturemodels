@@ -16,7 +16,7 @@ logit_inversa <- function(x) { 1/(1+exp(-x)) }
 dados<-read.csv("dados.csv", header = TRUE)
 n<-length(dados$y)  
 N<-50
-k=2
+k=3
 stan_data <- list(k=k, n=n, x=dados$confusum, y=dados$y, N=N)
 fit33 <- stan("mix_logistic.stan", iter=70000, warmup = 10000, thin = 100, chains=2, data=stan_data, control = list(max_treedepth = 20))
 summary(fit33)
