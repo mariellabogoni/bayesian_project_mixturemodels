@@ -34,13 +34,6 @@ stan_dens(fit33, pars = c("beta_0[1]","beta_1[1]"),separate_chains = T)
 stan_dens(fit33, pars = c("beta_0[2]","beta_1[2]"),separate_chains = T) + scale_x_continuous(limits = c(0,1))
 
 
-#------------------------Intervals --------------------------------------------
-
-plot(fit33, pars = c("w[1]","w[2]")) + scale_x_continuous(limits = c(0,1))
-plot(fit33, pars = c("beta_0[1]","beta_1[1]")) 
-plot(fit33, pars = c("beta_0[2]","beta_1[2]")) + scale_x_continuous(limits = c(-1,0.5))
-
-
 #----------Posterior Predictive Check-------------------------------------------
 
 
